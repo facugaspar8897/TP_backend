@@ -1,0 +1,17 @@
+const { DataTypes } = require('sequelize');
+const sequelize = require('./../../config/database'); // Asegúrate de que la ruta apunte a tu archivo
+
+const Socio = sequelize.define('Socio', {
+    // Sequelize crea un campo 'id' autoincrementable automáticamente, no hace falta ponerlo
+    nombre: {type: DataTypes.STRING, allowNull: false},
+    apellido: {type: DataTypes.STRING, allowNull: false},
+    foto: {type: DataTypes.STRING, allowNull: true},
+    dni: {type: DataTypes.STRING, allowNull: false},
+    numeroSocio: {type: DataTypes.INTEGER, allowNull: false},
+    activo:{type: DataTypes.BOOLEAN,allowNull:false}
+}, {
+    tableName: 'socios', // Nombre de la tabla en minúsculas y plural
+    timestamps: true, // Crea automáticamente los campos createdAt y updatedAt
+});
+
+module.exports = Socio;
